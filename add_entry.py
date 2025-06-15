@@ -3,7 +3,6 @@ import numpy as np
 from datetime import datetime, timedelta
 import os
 import streamlit as st
-import math
 
 
 st.title("Content Tracker")

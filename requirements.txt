@@ -1,6 +1,4 @@
 streamlit
-pandas
+git ppandas
 numpy
-datetime
-math
 os
