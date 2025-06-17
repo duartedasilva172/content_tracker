@@ -20,6 +20,7 @@ COLUMNS = [
     "Video Type",
     "Time Posted",
     "Likes",
+    "Comments",
     "Shares",
     "Views",
 ]
@@ -36,6 +37,7 @@ with st.form("Data Entry Form"):
     video_type = st.text_input("Video Type")
     time_posted = st.date_input("Date", value = datetime.today())
     likes = st.number_input("Number of likes", min_value = 0)
+    comments = st.number_input("Number of Comments", min_value = 0)
     shares = st.number_input("Number of shares", min_value = 0)
     views = st.number_input("Number of views", min_value = 0)
     date_input = st.date_input("Select the date")
@@ -55,6 +57,7 @@ with st.form("Data Entry Form"):
         'Video Type': video_type,
         'Time Posted': formatted_time_posted,
         'Likes':likes,
+        'Comments': comments,
         'Shares':shares,
         'Views':views
     }
@@ -102,11 +105,13 @@ if len(df) > 0 and 'Identifier' in df.columns:
         likes_val = df.loc[selected_index, 'Likes']
         shares_val = df.loc[selected_index, 'Shares']
         views_val = df.loc[selected_index, 'Views']
+        comments_val = df.loc[selected_index, 'Comments']
 
     # Show current values and allow editing 
         new_likes = st.number_input("New Likes", min_value= 0, value=0 if pd.isna(likes_val) else int(likes_val))
         new_shares = st.number_input("New Shares", min_value=0, value=0 if pd.isna(shares_val) else int(shares_val))                             
         new_views = st.number_input("New Views", min_value=0, value=0 if pd.isna(views_val) else int(views_val))
+        new_comments = st.number_input("New Comments", min_value=0, value= 0 if pd.isna(comments_val) else int(comments_val))
 
         if st.button("Update Metrics"):
         # Update selected row 
