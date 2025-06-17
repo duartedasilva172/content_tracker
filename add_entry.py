@@ -68,7 +68,7 @@ with st.form("Data Entry Form"):
         df = pd.concat([df, pd.DataFrame([new_entry])], ignore_index=False)
 
         # Save back to CSV
-        df.to_csv(FILENAME, index=True)
+        df.to_csv(FILENAME, index=False)
         st.success("New post added successfully!")
 
         # Show updated data
