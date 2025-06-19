@@ -35,7 +35,7 @@ with st.form("Data Entry Form"):
     st.subheader("Add new post")
     video_title = st.text_input("Video Title")
     platform = st.selectbox("Select platform", ["Instagram", "TikTok", "Flip", "Facebook", "Youtube", "Twitch", "Snapchat"])
-    video_type = st.text_input("Video Type", help="Describe the content format (e.g., edits, talking head, motivation, tips)")
+    video_type = st.selectbox("Video Type", ["Talking head", "Motivation", "Edit", "Motivation", "Tips", "Meme"], help="Describe the content format (e.g., edits, talking head, motivation, tips)")
     likes = st.number_input("Number of likes", min_value = 0)
     comments = st.number_input("Number of comments", min_value = 0)
     shares = st.number_input("Number of shares", min_value = 0)
@@ -90,7 +90,7 @@ if os.path.exists(FILENAME):
     df = pd.read_csv(FILENAME)
 
     # Create a label to uniquely identify rows
-if len(df) > 0 and 'Identifier' in df.columns:
+if len(df) > 0:
     df['Identifier'] = df['Video Title'].astype(str) + " (" + df['Platform'].astype(str) + ")"
 
     selected_id = st.selectbox("Select a video to update", df['Identifier'])
@@ -130,5 +130,25 @@ if len(df) > 0 and 'Identifier' in df.columns:
         st.info("No data found yet. Add posts first.")
 else: 
     st.info("There are no posts available to update.")
+
+# ____________________________________
+
+st.markdown("---")
+st.subheader("Delete rows")
+
+if os.path.exists(FILENAME):
+    df = pd.read_csv(FILENAME)
+    st.dataframe(df)
+
+    # Let user select a row to delete by title or index
+    selected_index = st.selectbox("Select post to delete (by index)", df.index)
+
+    if st.button("Delete Selected Post"):
+        df = df.drop(index=selected_index)
+        df.to_csv(FILENAME, index=False)
+        st.success("Post deleted")
+
+
+
 
    
