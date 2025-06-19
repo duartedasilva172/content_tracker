@@ -41,8 +41,8 @@ with st.form("Data Entry Form"):
     shares = st.number_input("Number of shares", min_value = 0)
     views = st.number_input("Number of views", min_value = 0)
     hashtags_input = st.text_input("Enter hashtags (comma-separated)", "")
-    date_input = st.date_input("Select the date")
-    time_input = st.time_input("Select the time")
+    date_input = st.date_input("Post Date", help="Select the date the video was posted")
+    time_input = st.time_input("Post Time (12-hour format)", value=time(0, 0))
 
     # Combine into a datetime object
     datetime_posted = datetime.combine(date_input, time_input)
