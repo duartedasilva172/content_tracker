@@ -36,7 +36,6 @@ with st.form("Data Entry Form"):
     video_title = st.text_input("Video Title")
     platform = st.selectbox("Select platform", ["Instagram", "TikTok", "Flip", "Facebook", "Youtube", "Twitch", "Snapchat"])
     video_type = st.text_input("Video Type", help="Describe the content format (e.g., edits, talking head, motivation, tips)")
-    time_posted = st.date_input("Date", value = datetime.today())
     likes = st.number_input("Number of likes", min_value = 0)
     comments = st.number_input("Number of Comments", min_value = 0)
     shares = st.number_input("Number of shares", min_value = 0)
