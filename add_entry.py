@@ -34,12 +34,13 @@ with st.form("Data Entry Form"):
     st.subheader("Add new post")
     video_title = st.text_input("Video Title")
     platform = st.selectbox("Select platform", ["Instagram", "TikTok", "Flip", "Facebook", "Youtube", "Twitch", "Snapchat"])
-    video_type = st.text_input("Video Type")
+    video_type = st.text_input("Video Type", help="Describe the content format (e.g., edits, talking head, motivation, tips)")
     time_posted = st.date_input("Date", value = datetime.today())
     likes = st.number_input("Number of likes", min_value = 0)
     comments = st.number_input("Number of Comments", min_value = 0)
     shares = st.number_input("Number of shares", min_value = 0)
     views = st.number_input("Number of views", min_value = 0)
+    hashtags_input = st.text_input("Enter hashtags (comma-separated)", "")
     date_input = st.date_input("Select the date")
     time_input = st.time_input("Select the time")
 
@@ -106,6 +107,7 @@ if len(df) > 0 and 'Identifier' in df.columns:
         shares_val = df.loc[selected_index, 'Shares']
         views_val = df.loc[selected_index, 'Views']
         comments_val = df.loc[selected_index, 'Comments']
+        hashtags_list = [tag.strip() for tag in hashtags_input.split("\n") if tag]
 
     # Show current values and allow editing 
         new_likes = st.number_input("New Likes", min_value= 0, value=0 if pd.isna(likes_val) else int(likes_val))
