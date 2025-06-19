@@ -37,7 +37,7 @@ with st.form("Data Entry Form"):
     platform = st.selectbox("Select platform", ["Instagram", "TikTok", "Flip", "Facebook", "Youtube", "Twitch", "Snapchat"])
     video_type = st.text_input("Video Type", help="Describe the content format (e.g., edits, talking head, motivation, tips)")
     likes = st.number_input("Number of likes", min_value = 0)
-    comments = st.number_input("Number of Comments", min_value = 0)
+    comments = st.number_input("Number of comments", min_value = 0)
     shares = st.number_input("Number of shares", min_value = 0)
     views = st.number_input("Number of views", min_value = 0)
     hashtags_input = st.text_input("Enter hashtags (comma-separated)", "")
